@@ -1,7 +1,7 @@
 Initial setup of Amazon EC2 Ubuntu instance
 ===========================================
 
-1. Install aptitude, and update system:
+1. Install [aptitude](https://wiki.debian.org/Aptitude), and update system:
 ```
 sudo apt-get install aptitude
 sudo aptitude update
@@ -23,7 +23,7 @@ sudo aptitude install git \
 mkdir ~/temp
 ```
 
-5. Make sure Python is available via the `python` command:
+5. Make sure [Python](https://www.python.org/) is available via the `python` command:
 ```
 sudo ln -s /usr/bin/python2.7 /usr/bin/python
 

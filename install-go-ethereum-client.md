@@ -27,7 +27,7 @@ git checkout v1.8.1
 make -j 2 geth
 ```
 
-4. Make a symbolic link to `geth` so that you can run it from anywhere (adjust the source path as necessary!):
+4. Make a symbolic link to `geth` so that you can run it from anywhere (**adjust the source path as necessary!**):
 ```
 sudo ln -s /home/ubuntu/dev/go-ethereum/build/bin/geth /usr/bin/geth
 ```

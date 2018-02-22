@@ -15,7 +15,8 @@ sudo aptitude upgrade
 sudo aptitude install git \
   python2.7-dev python2.7 \
   wget curl \
-  build-essential
+  build-essential \
+  screen
 ```
 
 4. Create local `temp` directory:

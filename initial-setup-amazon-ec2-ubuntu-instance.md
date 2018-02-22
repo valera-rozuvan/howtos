@@ -45,7 +45,7 @@ sudo pip install glances
 
 7. Enable 16GB Swap partition (see [original instructions](https://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance)):
 ```
-sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=16384
 sudo /sbin/mkswap /var/swap.1
 sudo chmod 600 /var/swap.1
 sudo /sbin/swapon /var/swap.1

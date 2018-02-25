@@ -62,7 +62,6 @@ echo "/var/swap.1   swap    swap    defaults        0   0" | sudo tee -a /etc/fs
 10. Configure rules for [ufw](https://launchpad.net/ufw), and enable it:
 
 ```
-sudo aptitude install -y ufw
 sudo ufw allow 22   # enable SSH
 sudo ufw allow 873  # enable rsync
 sudo ufw enable

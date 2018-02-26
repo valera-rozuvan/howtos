@@ -17,7 +17,8 @@ sudo aptitude install -y git \
   wget curl \
   build-essential \
   screen \
-  ufw
+  ufw \
+  rsync
 ```
 
 4. Create local `temp` directory:

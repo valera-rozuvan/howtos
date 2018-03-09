@@ -9,9 +9,9 @@ sudo tar -C /usr/local -xzf go1.10.linux-amd64.tar.gz
 rm -rf go1.10.linux-amd64.tar.gz
 ```
 
-2. Add `go` binary to `PATH`. Append the following to the file `~/.bashrc`:
+2. Add `go` binary to `PATH`. To update `~/.bashrc` file, run:
 ```
-export PATH=$PATH:/usr/local/go/bin
+echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
 ```
 
 2. Login and logout (or run `source ~/.bashrc`) so that changes propagate to `PATH`.

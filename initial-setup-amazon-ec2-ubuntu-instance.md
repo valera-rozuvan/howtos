@@ -53,7 +53,7 @@ sudo chmod 600 /var/swap.1
 sudo /sbin/swapon /var/swap.1
 ```
 
-8. Enable Swap partition during boot. Add the following line to `/etc/fstab` file:
+8. Enable Swap partition during boot. To update `/etc/fstab` file, run:
 ```
 echo "/var/swap.1   swap    swap    defaults        0   0" | sudo tee -a /etc/fstab
 ```

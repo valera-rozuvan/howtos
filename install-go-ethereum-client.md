@@ -23,7 +23,7 @@ mkdir dev
 cd dev
 git clone https://github.com/ethereum/go-ethereum.git
 cd go-ethereum
-git checkout v1.8.1
+git checkout v1.8.2
 make -j 2 geth
 ```
 

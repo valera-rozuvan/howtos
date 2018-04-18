@@ -81,7 +81,12 @@ adb --version
 
 11. Install necessary Android SDK packages:
 ```
-tools/bin/sdkmanager "extras;android;m2repository" "build-tools;26.0.3" "build-tools;27.0.3" "platforms;android-26" "platforms;android-27"
+tools/bin/sdkmanager \
+  "extras;android;m2repository" \
+  "build-tools;26.0.3" \
+  "build-tools;27.0.3" \
+  "platforms;android-26" \
+  "platforms;android-27"
 ```
 
 12. Install Cordova:

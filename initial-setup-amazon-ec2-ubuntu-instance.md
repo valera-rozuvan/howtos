@@ -61,7 +61,10 @@ sudo /sbin/swapon /var/swap.1
 echo "/var/swap.1   swap    swap    defaults        0   0" | sudo tee -a /etc/fstab
 ```
 
-9. Reboot instance.
+9. Reboot instance:
+```
+sudo shutdown -r now
+```
 
 10. Configure rules for [ufw](https://launchpad.net/ufw), and enable it:
 

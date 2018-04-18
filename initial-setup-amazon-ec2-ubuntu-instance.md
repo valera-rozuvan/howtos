@@ -8,7 +8,10 @@ sudo aptitude update
 sudo aptitude upgrade -y
 ```
 
-2. Reboot instance.
+2. Reboot instance:
+```
+sudo shutdown -r now
+```
 
 3. Install essential packages (some might be already installed):
 ```

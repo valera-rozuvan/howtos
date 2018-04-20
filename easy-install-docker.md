@@ -1,4 +1,4 @@
-Install Docker
+Easy Install Docker
 ==============
 
 Official instructions on how to install Docker on Debian can be found here:

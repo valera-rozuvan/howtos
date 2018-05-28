@@ -43,12 +43,17 @@ sudo python get-pip.py
 rm -rf get-pip.py
 ```
 
-6. Install [glances](https://github.com/nicolargo/glances) monitoring tool:
+6.5 Install `pip3`:
+```
+curl -sS https://bootstrap.pypa.io/get-pip.py | sudo python3
+```
+
+7. Install [glances](https://github.com/nicolargo/glances) monitoring tool:
 ```
 sudo pip install glances
 ```
 
-7. Enable 4GB Swap partition (see [original instructions](https://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance)):
+8. Enable 4GB Swap partition (see [original instructions](https://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance)):
 ```
 sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=4096
 sudo /sbin/mkswap /var/swap.1
@@ -56,17 +61,17 @@ sudo chmod 600 /var/swap.1
 sudo /sbin/swapon /var/swap.1
 ```
 
-8. Enable Swap partition during boot. To update `/etc/fstab` file, run:
+9. Enable Swap partition during boot. To update `/etc/fstab` file, run:
 ```
 echo "/var/swap.1   swap    swap    defaults        0   0" | sudo tee -a /etc/fstab
 ```
 
-9. Reboot instance:
+10. Reboot instance:
 ```
 sudo shutdown -r now
 ```
 
-10. Configure rules for [ufw](https://launchpad.net/ufw), and enable it:
+11. Configure rules for [ufw](https://launchpad.net/ufw), and enable it:
 
 ```
 sudo ufw allow 22   # enable SSH

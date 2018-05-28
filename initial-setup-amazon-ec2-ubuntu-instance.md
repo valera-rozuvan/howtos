@@ -43,7 +43,7 @@ sudo python get-pip.py
 rm -rf get-pip.py
 ```
 
-6.5 Install `pip3`:
+6.5. Install `pip3`:
 ```
 curl -sS https://bootstrap.pypa.io/get-pip.py | sudo python3
 ```

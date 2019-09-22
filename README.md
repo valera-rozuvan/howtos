@@ -8,3 +8,4 @@ A collection of HOWTOs, mostly for my own use.
 4. [GNU screen tips](screen.md)
 5. [Setup Cordova on Linux](setup_cordova.md)
 6. [Easy Install Docker](easy-install-docker.md)
+7. [Tweak Debian Mate](tweak-debian-mate.md)

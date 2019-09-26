@@ -18,7 +18,31 @@ Install `keyboard-configuration`, and add to the file `/etc/default/keyboard` th
 XKBMODEL="pc105"
 XKBLAYOUT="us,ru,ua"
 XKBVARIANT=""
-XKBOPTIONS="grp:alt_shift_toggle"
+XKBOPTIONS="grp:lwin_toggle,terminate:ctrl_alt_bksp"
 BACKSPACE="guess"
+```
+
+# Disable default Gnome master passwords/PGP passwords
+
+```
+1.) Go to: `System` -> `Preferences` -> `Personal` -> `Startup Applications`.
+2.) Disable: `Secret Storage Service` and `SSH Key Agent`
+```
+
+Add the following lines to the file `~/.gnupg/gpg-agent.conf`:
+
+```
+default-cache-ttl 34560000
+max-cache-ttl 34560000
+
+default-cache-ttl-ssh 34560000
+max-cache-ttl-ssh 34560000
+```
+
+Install CLI tool for GNUpg passphrase, and make it the default:
+
+```
+sudo apt install pinentry-tty
+sudo update-alternatives --config pinentry
 ```
 

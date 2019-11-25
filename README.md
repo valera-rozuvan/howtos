@@ -10,4 +10,4 @@ A collection of HOWTOs, mostly for my own use.
 6. [Easy Install Docker](easy-install-docker.md)
 7. [Tweak Debian Mate](tweak-debian-mate.md)
 8. [VNC and Vino](vnc-and-vino.md)
-
+9. [gcloud setup](gcloud-setup.md)

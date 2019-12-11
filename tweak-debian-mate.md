@@ -18,7 +18,7 @@ Install `keyboard-configuration`, and add to the file `/etc/default/keyboard` th
 XKBMODEL="pc105"
 XKBLAYOUT="us,ru,ua"
 XKBVARIANT=""
-XKBOPTIONS="grp:lwin_toggle,terminate:ctrl_alt_bksp"
+XKBOPTIONS="terminate:ctrl_alt_bksp,grp:lwin_switch"
 BACKSPACE="guess"
 ```
 

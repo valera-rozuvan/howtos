@@ -22,6 +22,8 @@ XKBOPTIONS="terminate:ctrl_alt_bksp,grp:lwin_switch"
 BACKSPACE="guess"
 ```
 
+If `lwin_switch` doesn't work for you, try `lwin_toggle` instead.
+
 # Disable default Gnome master passwords/PGP passwords
 
 ```

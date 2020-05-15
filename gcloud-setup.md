@@ -31,3 +31,16 @@ gcloud config configurations list
 kubectl config get-contexts
 kubectl config rename-context old-ctx-name new-ctx-name
 ```
+
+Initial config create, for working with a k8s cluster:
+
+```
+gcloud config configurations create NEW_CONFIG_NAME
+gcloud auth login
+gcloud config set core/project PROJECT_NAME && \
+  gcloud config set compute/region europe-west3 && \
+  gcloud config set compute/zone europe-west3-a && \
+  gcloud container clusters get-credentials CLUSTER_NAME && \
+  kubectl config rename-context OLD_CTX_NAME NEW_CTX_NAME && \
+  kubectl config get-contexts
+```

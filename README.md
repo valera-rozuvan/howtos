@@ -12,3 +12,4 @@ A collection of HOWTOs, mostly for my own use.
 8. [VNC and Vino](vnc-and-vino.md)
 9. [gcloud setup](gcloud-setup.md)
 10. [Publish new NPM version](publish-new-npm-version.md)
+11. [Update fork PR](update-fork-pr.md)

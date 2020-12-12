@@ -13,3 +13,4 @@ A collection of HOWTOs, mostly for my own use.
 9. [gcloud setup](./docs/009-gcloud-setup.md)
 10. [Publish new NPM version](./docs/010-publish-new-npm-version.md)
 11. [Update fork PR](./docs/011-update-fork-pr.md)
+12. [Install & run Flutter on Linux](./docs/012-install-flutter-on-linux.md)

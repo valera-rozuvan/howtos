@@ -6,7 +6,7 @@
 find DIR_1 -type f | wc -l
 ```
 
-2. Then do they comparison, using `pv` to see progress:
+2. Then do the comparison, using `pv` to see progress:
 
 ```
 diff -rqs DIR_1 DIR_2 | pv -l -s NUM_FILES > /tmp/logfile

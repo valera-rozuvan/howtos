@@ -15,3 +15,4 @@ A collection of HOWTOs, mostly for my own use.
 11. [Update fork PR](./docs/011-update-fork-pr.md)
 12. [Install & run Flutter on Linux](./docs/012-install-flutter-on-linux.md)
 13. [Compare 2 directories](./docs/013-compare-2-directories.md)
+14. [Sync 2 directories](./docs/014-sync-2-directories.md)

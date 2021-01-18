@@ -18,4 +18,5 @@ A collection of HOWTOs, mostly for my own use.
 14. [Sync 2 directories](./docs/014-sync-2-directories.md)
 15. [rsync with custom SSH port](./docs/015-rsync-with-custom-ssh-port.md)
 16. [Virtual MacOS Web Cam](./docs/016-virtual-mac-os-web-cam.md)
-16. [random 1GB file](./docs/017-random-1-gb-file.md)
+17. [random 1GB file](./docs/017-random-1-gb-file.md)
+18. [Encrypt a partition with LUKS](018-encrypt-a-partition-with-luks.md)

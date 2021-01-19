@@ -61,7 +61,7 @@ max-cache-ttl-ssh 34560000
 pinentry-program /usr/bin/pinentry-curses
 ```
 
-Make sure you install a Pinentry program, I prefer the curses one (it's CLI friendly):
+Make sure you install the `pinentry` program, I prefer the `curses` one (it's CLI friendly):
 
 ```
 sudo aptitude install pinentry-curses
@@ -85,7 +85,7 @@ Press <enter> to keep the current choice[*], or type selection number: 1
 update-alternatives: using /usr/bin/pinentry-curses to provide /usr/bin/pinentry (pinentry) in manual mode
 ```
 
-Also, setup tell your shell to use tty for GPG (`pinentry`) for entering the passphrase. Add to your `~/.bashrc` file:
+Also, setup your shell to use `tty` for GPG (`pinentry`) for entering the passphrase. Add to your `~/.bashrc` file:
 
 ```
 export GPG_TTY=$(tty)

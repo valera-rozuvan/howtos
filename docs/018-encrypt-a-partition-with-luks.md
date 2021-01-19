@@ -17,23 +17,23 @@ dmesg
 You should see something along the lines of:
 
 ```
-sd 8:0:0:0: [sdc] Attached SCSI disk
-EXT4-fs (sdc1): mounting ext3 file system using the ext4 subsystem
-EXT4-fs (sdc1): mounted filesystem with ordered data mode. Opts: (null)
+sd 8:0:0:0: [sda] Attached SCSI disk
+EXT4-fs (sda1): mounting ext3 file system using the ext4 subsystem
+EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: (null)
 ```
 
-Thus, in this example, the unit will be the `sdc` (`/dev/sdc`) and the first and only partition will be the `sdc1` (`/dev/sdc1`).
+Thus, in this example, the unit will be the `sda` (`/dev/sda`) and the first and only partition will be the `sda1` (`/dev/sda1`).
 
 4. Unmount the partition.
 
 ```
-umount /dev/sdc1
+umount /dev/sda1
 ```
 
 5. Delete the partition table and create a new one.
 
 ```
-fdisk /dev/sdc
+fdisk /dev/sda
 ```
 
 To eliminate currently existing partition table on the drive and create a new empty table, use the o option:
@@ -69,7 +69,7 @@ Syncing disks.
 Create a new primary partition that will contain the data encrypted with LUKS. For this, use fdisk again:
 
 ```
-fdisk /dev/sdc
+fdisk /dev/sda
 ```
 
 Use the n option to create the new partition:
@@ -119,14 +119,14 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-The new partition will now be accessible at `/dev/sdc1`.
+The new partition will now be accessible at `/dev/sda1`.
 
 7. Encrypt the new partition.
 
 Use the `cryptsetup` command with the `luksFormat` option to encrypt the new LUKS partition:
 
 ```
-cryptsetup luksFormat /dev/sdc1
+cryptsetup luksFormat /dev/sda1
 ```
 
 It will ask if you are sure (escribre YES, in capitals) and a passphrase or a long-and-complex-password twice:
@@ -134,7 +134,7 @@ It will ask if you are sure (escribre YES, in capitals) and a passphrase or a lo
 ```
 WARNING!
 ========
-This will overwrite data on /dev/sdc1 irrevocably.
+This will overwrite data on /dev/sda1 irrevocably.
 
 Are you sure? (Type uppercase yes): YES
 Enter LUKS passphrase: some_random_string
@@ -146,13 +146,13 @@ Verify passphrase: some_random_string
 Use the `cryptsetup` command again but this time with the `luksOpen` option to decrypt the partition. You should also give it a unique name for the mapping, in this example we will use the name `LUKS0001`:
 
 ```
-cryptsetup luksOpen /dev/sdc1 LUKS0001
+cryptsetup luksOpen /dev/sda1 LUKS0001
 ```
 
 That prompted the assigned password in the previous step:
 
 ```
-Enter passphrase for /dev/sdc1: some_random_string
+Enter passphrase for /dev/sda1: some_random_string
 ```
 
 To format as EXT4

@@ -34,6 +34,14 @@ To get full private key:
 gpg --export-secret-key -a "User Name <user.name@example.com>"
 ```
 
+To get a fingerprint:
+
+```
+gpg --fingerprint -a "User Name <user.name@example.com>"
+```
+
+Note - for all above commands, you can use the hash of the key (short or long version) instead of human readable ID (`User Name <user.name@example.com>`). Also, the flag `-a` instructs GPG to create ascii armored output (i.e. printer friendly, and not binary).
+
 ## Git and GPG setup on Linux for signing commits
 
 To enable Git on Linux to sign your commits with GPG, add the following to your `.git/config` file, in the Git repo you want to sign commits in:

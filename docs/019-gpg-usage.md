@@ -99,7 +99,7 @@ Also, setup your shell to use `tty` for GPG (`pinentry`) for entering the passph
 export GPG_TTY=$(tty)
 ```
 
-After all of this is done, when you do a Git commit, GPG will be automatically used to sign new commits. You can check signatures in commits with:
+After all of this is done, when you do a Git commit, GPG will be automatically used to sign it. You can check signatures in Git commits with:
 
 ```
 git log --show-signature

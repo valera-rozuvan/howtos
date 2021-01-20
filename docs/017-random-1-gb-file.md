@@ -3,13 +3,24 @@
 To create a random file (random name, random data) that is 1GB in size, you can use:
 
 ```
-dd if=/dev/urandom of=/some_folder/`tr -dc A-Za-z0-9 </dev/urandom | head -c 26` iflag=fullblock oflag=direct bs=64M count=16 status=progress
+dd \
+  if=/dev/urandom \
+  of=/some_folder/`tr -dc A-Za-z0-9 </dev/urandom | head -c 26` \
+  iflag=fullblock \
+  oflag=direct \
+  bs=64M \
+  count=16 \
+  status=progress
 ```
 
-If you want to loop the command, and create 14 random files, you can use the following:
+Note that you need to replace `some_folder` in the above command to the actual folder where you want the random files to be generated.
+
+The sub command `tr -dc A-Za-z0-9 </dev/urandom | head -c 26` simply generates a random string containing 26 characters.
+
+If you want to loop the command, and create `N` random files, you can use the following:
 
 ```
-for i in {1..14}; do COMMAND-HERE; done
+for i in {1..N}; do COMMAND; done
 ```
 
-Where `COMMAND-HERE` should be replaced with the command to create 1 random file.
+Where `COMMAND` should be replaced with the command to create 1 random file.

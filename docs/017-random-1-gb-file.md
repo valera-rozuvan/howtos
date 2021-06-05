@@ -24,3 +24,28 @@ for i in {1..N}; do COMMAND; done
 ```
 
 Where `COMMAND` should be replaced with the command to create 1 random file.
+
+## Sample bash script
+
+Here is a Bash script that will create 869 random files, each being 1GB in size. Make sure to properly set `FOLDER_TO_FILL`.
+
+```
+#!/bin/bash
+
+FOLDER_TO_FILL=/some/system/path
+
+for i in {1..869}; do
+echo "Writing random file ${i} of 869:"
+  dd \
+    if=/dev/urandom \
+    of=$FOLDER_TO_FILL/`tr -dc A-Za-z0-9 </dev/urandom | head -c 26` \
+    iflag=fullblock \
+    oflag=direct \
+    bs=64M \
+    count=16 \
+    status=progress
+done
+
+echo "done; without errors ;)"
+exit 0
+```

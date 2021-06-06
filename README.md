@@ -23,3 +23,4 @@ A collection of HOWTOs, mostly for my own use.
 19. [GPG usage](./docs/019-gpg-usage.md)
 20. [Preparing a Debian server for Docker services](./docs/020-preparing-a-debian-server-for-docker-services.md)
 21. [Useful MongoDB commands](./docs/021-useful-mongo-db-commands.md)
+22. [Backup a folder with tar and 7z](./docs/022-backup-a-folder-with-tar-and--7z.md)

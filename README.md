@@ -1,12 +1,18 @@
-# HOWTOs
+# howtos
 
 A collection of HOWTO documents - mostly linux related.
 
-## Getting latest source
+## getting latest source
 
 A public git repo is vailable at [git.rozuvan.net/howtos](https://git.rozuvan.net/howtos). All other sources should be considered mirrors.
 
-## Contents
+You can get a local copy by running the command:
+
+```
+git clone https://git.rozuvan.net/howtos
+```
+
+## contents
 
 1. [How to convert YouTube video to MP3 audio file for listening](./docs/001-convert-youtube-to-mp3.md)
 2. [Initial setup of Amazon EC2 Ubuntu instance](./docs/002-initial-setup-amazon-ec2-ubuntu-instance.md)
@@ -31,10 +37,10 @@ A public git repo is vailable at [git.rozuvan.net/howtos](https://git.rozuvan.ne
 21. [Useful MongoDB commands](./docs/021-useful-mongo-db-commands.md)
 22. [Backup a folder with tar and 7z](./docs/022-backup-a-folder-with-tar-and--7z.md)
 
-## License
+## license
 
 This project is licensed under the MIT License. See [LICENSE](./LICENSE) for more details.
 
-## Maintainers
+## maintainers
 
 - [Valera Rozuvan](https://valera.rozuvan.net/)

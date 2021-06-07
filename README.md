@@ -1,6 +1,12 @@
 # HOWTOs
 
-A collection of HOWTOs, mostly for my own use.
+A collection of HOWTO documents - mostly linux related.
+
+## Getting latest source
+
+A public git repo is vailable at [git.rozuvan.net/howtos](https://git.rozuvan.net/howtos). All other sources should be considered mirrors.
+
+## Contents
 
 1. [How to convert YouTube video to MP3 audio file for listening](./docs/001-convert-youtube-to-mp3.md)
 2. [Initial setup of Amazon EC2 Ubuntu instance](./docs/002-initial-setup-amazon-ec2-ubuntu-instance.md)
@@ -24,3 +30,11 @@ A collection of HOWTOs, mostly for my own use.
 20. [Preparing a Debian server for Docker services](./docs/020-preparing-a-debian-server-for-docker-services.md)
 21. [Useful MongoDB commands](./docs/021-useful-mongo-db-commands.md)
 22. [Backup a folder with tar and 7z](./docs/022-backup-a-folder-with-tar-and--7z.md)
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](./LICENSE) for more details.
+
+## Maintainers
+
+- [Valera Rozuvan](https://valera.rozuvan.net/)

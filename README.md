@@ -37,6 +37,7 @@ git clone https://git.rozuvan.net/howtos
 21. [Useful MongoDB commands](./docs/021-useful-mongo-db-commands.md)
 22. [Backup a folder with tar and 7z](./docs/022-backup-a-folder-with-tar-and--7z.md)
 23. [Small and fast static file server - lighttpd](./docs/023-small-and-fast-static-file-server-lighttpd.md)
+24. [Change hostname in Debian](./docs/024-change-hostname-in-debian.md)
 
 ## license
 

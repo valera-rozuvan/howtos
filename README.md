@@ -4,7 +4,7 @@ A collection of HOWTO documents - mostly linux related.
 
 ## getting latest source
 
-A public git repo is vailable at [git.rozuvan.net/howtos](https://git.rozuvan.net/howtos). All other sources should be considered mirrors.
+A public git repo is available at [git.rozuvan.net/howtos](https://git.rozuvan.net/howtos). Several mirrors exist: [mirror 1](https://github.com/valera-rozuvan/howtos), [mirror 2](https://gitlab.com/valera-rozuvan/howtos).
 
 You can get a local copy by running the command:
 

@@ -39,6 +39,11 @@ git clone https://git.rozuvan.net/howtos
 23. [Small and fast static file server - lighttpd](./docs/023-small-and-fast-static-file-server-lighttpd.md)
 24. [Change hostname in Debian](./docs/024-change-hostname-in-debian.md)
 
+## Other cool things
+
+- [automated running of tests on AWS](./aws-test-runner)
+- [fetch all GitHub repos from an org or user](./fetch-all-github-repos)
+
 ## license
 
 This project is licensed under the MIT License. See [LICENSE](./LICENSE) for more details.

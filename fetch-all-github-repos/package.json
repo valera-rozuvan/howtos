@@ -1,0 +1,12 @@
+{
+  "name": "fetch-all-github-repos",
+  "version": "1.0.0",
+  "description": "Fetch all GitHub repos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Valera Rozuvan",
+  "license": "MIT",
+  "dependencies": {}
+}

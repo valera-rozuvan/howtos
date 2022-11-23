@@ -1,0 +1,17 @@
+{
+  "name": "jest-dynamo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1260.0"
+  }
+}

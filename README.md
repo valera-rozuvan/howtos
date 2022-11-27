@@ -44,10 +44,20 @@ git clone https://git.rozuvan.net/howtos
 - [automated running of tests on AWS](./aws-test-runner)
 - [fetch all GitHub repos from an org or user](./fetch-all-github-repos)
 
+---
+
 ## license
 
-This project is licensed under the MIT License. See [LICENSE](./LICENSE) for more details.
+The project `'howtos'` is licensed under the MIT License.
 
-## maintainers
+See [LICENSE](./LICENSE) for more details.
 
-- [Valera Rozuvan](https://valera.rozuvan.net/)
+The latest source code can be retrieved from one of several mirrors:
+
+1. [github.com/valera-rozuvan/howtos](https://github.com/valera-rozuvan/howtos)
+
+2. [gitlab.com/valera-rozuvan/howtos](https://gitlab.com/valera-rozuvan/howtos)
+
+3. [git.rozuvan.net/howtos](https://git.rozuvan.net/howtos)
+
+Copyright (c) 2018-2022 [Valera Rozuvan](https://valera.rozuvan.net/)

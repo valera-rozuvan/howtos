@@ -1,16 +1,6 @@
 # howtos
 
-A collection of HOWTO documents - mostly linux related.
-
-## getting latest source
-
-A public git repo is available at [git.rozuvan.net/howtos](https://git.rozuvan.net/howtos). Several mirrors exist: [mirror 1](https://github.com/valera-rozuvan/howtos), [mirror 2](https://gitlab.com/valera-rozuvan/howtos).
-
-You can get a local copy by running the command:
-
-```
-git clone https://git.rozuvan.net/howtos
-```
+a collection of HOWTO documents - mostly linux related
 
 ## contents
 
@@ -39,7 +29,7 @@ git clone https://git.rozuvan.net/howtos
 23. [Small and fast static file server - lighttpd](./docs/023-small-and-fast-static-file-server-lighttpd.md)
 24. [Change hostname in Debian](./docs/024-change-hostname-in-debian.md)
 
-## Other cool things
+## other cool things
 
 - [automated running of tests on AWS](./aws-test-runner)
 - [fetch all GitHub repos from an org or user](./fetch-all-github-repos)

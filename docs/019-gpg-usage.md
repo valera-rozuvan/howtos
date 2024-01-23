@@ -10,6 +10,12 @@ To generate a new key:
 gpg --gen-key
 ```
 
+If you want to have options as to what algorithm to use, and how long the key should be, use the expanded command:
+
+```
+gpg --full-generate-key
+```
+
 To list keys in long format:
 
 ```

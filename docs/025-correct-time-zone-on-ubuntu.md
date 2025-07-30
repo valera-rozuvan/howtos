@@ -1,6 +1,6 @@
 # Correct time zone on Ubuntu
 
-This is working on Ubuntu 24.10. Also, this should work on arecent Debian based distro.
+This is working on Ubuntu 24.10. Also, this should work on a recent Debian based distro.
 
 First, make sure you are getting automatic date and time updates via NTP:
 

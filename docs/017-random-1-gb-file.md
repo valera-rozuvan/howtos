@@ -49,3 +49,25 @@ done
 echo "done; without errors ;)"
 exit 0
 ```
+
+## Using dcfldd tool
+
+There is a tool available to write random data to a device called [dcfldd](https://github.com/resurrecting-open-source-projects/dcfldd). You can install it on any Linux system. For example, on a Debian based system:
+
+```shell
+sudo apt-get install dcfldd
+```
+
+Then figure out the device name from `dmesg` or `gparted`. Once you know the device name (for example `/dev/sda`), you can completely overwrite it with random data:
+
+```shell
+sudo dcfldd \
+  if=/dev/urandom \
+  of=/dev/sda \
+  statusinterval=10 \
+  status=progress \
+  bs=10M \
+  conv=notrunc 
+```
+
+After the device is completely wiped, use `gparted` to format it with a new file system.

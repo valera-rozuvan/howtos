@@ -28,6 +28,7 @@ a collection of HOWTO documents - mostly linux related
 22. [Backup a folder with tar and 7z](./docs/022-backup-a-folder-with-tar-and--7z.md)
 23. [Small and fast static file server - lighttpd](./docs/023-small-and-fast-static-file-server-lighttpd.md)
 24. [Change hostname in Debian](./docs/024-change-hostname-in-debian.md)
+25. [Set proper time zone on a Debian-based Linux distro](./docs/025-correct-time-zone-on-ubuntu.md)
 
 ## other cool things
 

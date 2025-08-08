@@ -29,6 +29,7 @@ a collection of HOWTO documents - mostly linux related
 23. [Small and fast static file server - lighttpd](./docs/023-small-and-fast-static-file-server-lighttpd.md)
 24. [Change hostname in Debian](./docs/024-change-hostname-in-debian.md)
 25. [Set proper time zone on a Debian-based Linux distro](./docs/025-correct-time-zone-on-ubuntu.md)
+26. [Recursive sha256 workflow](./docs/026-recursive-sha256-workflow.md)
 
 ## other cool things
 

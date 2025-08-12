@@ -237,9 +237,9 @@ Suppose you have some hints that a drive in the array is bad (or about to become
 We will tell `mdadm` to mark the drive as failed, then remove it from the array, and also clear the superblock. The last item will make `mdadm` recreate the data on the drive from other good drives, if you decide to re-add it back.
 
 ```shell
-sudo mdadm --manage /dev/md127 --fail /dev/dc1
-sudo mdadm --manage /dev/md127 --remove /dev/dc1
-sudo mdadm --zero-superblock /dev/dc1
+sudo mdadm --manage /dev/md127 --fail /dev/sdc1
+sudo mdadm --manage /dev/md127 --remove /dev/sdc1
+sudo mdadm --zero-superblock /dev/sdc1
 ```
 
 **NOTE**: If you get some error that a drive can't be "hot removed", issue the command `sudo echo "frozen" | sudo tee -a /sys/block/md127/md/sync_action` first. Then try again to remove the drive.
@@ -254,7 +254,7 @@ mdadm: hot removed /dev/sdc1 from /dev/md127
 Now you can do anything you want with the drive `/dev/sdc`. Once ready to add it back to the array, make sure it's properly formatted (there is a primary partition on it - refer to the beginning of this guide), and run the command:
 
 ```shell
-sudo mdadm --manage /dev/md127 --add /dev/dc1
+sudo mdadm --manage /dev/md127 --add /dev/sdc1
 ```
 
 This operation will trigger a `check`, and the new drive will be inserted in the array, and populated with data from the other 3 drives.

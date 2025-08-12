@@ -170,7 +170,7 @@ Restart the VM, and check that you have your Raid 5 array automatically mounted,
 
 ## checking the array (scrubbing)
 
-Open two terminals. In one terminal run the command:
+Open three terminals. In one terminal run the command:
 
 ```shell
 sudo watch -n 1 cat /proc/mdstat
@@ -178,13 +178,21 @@ sudo watch -n 1 cat /proc/mdstat
 
 This will periodically display the updated contents of the file `/proc/mdstat`.
 
-In the other terminal run the command:
+In the second terminal run the command:
+
+```shell
+sudo watch -n 1 cat /sys/block/md127/md/mismatch_cnt
+```
+
+This will periodically display the number of mismatches found (meaning that there is some data integrity issues).
+
+In the third terminal run the command:
 
 ```shell
 sudo echo "check" | sudo tee -a /sys/block/md127/md/sync_action
 ```
 
-After you launch the command, you can immediately see the result in the other terminal. The progress for the check should start.
+After you launch the command, you can immediately see the result in the other two terminals. The progress for the check should start.
 
 ## some statistics about the array
 
@@ -201,6 +209,55 @@ sudo mdadm --examine /dev/sdb1
 ```
 
 Take note of the drive's UUID - look for `Device UUID` in the output.
+
+## checking the file system of the array
+
+It's assumed that `ext4` fs was used on the Raid array. Also, it's assumed that the Raid array itself has no errors. Be sure to first unmount the fs:
+
+```shell
+sudo unmount /dev/md127
+```
+
+Then run the fs checker:
+
+```shell
+sudo e2fsck -vf /dev/md127
+```
+
+Observe some messages from the checker. It all is OK, you can mount the fs back:
+
+```shell
+sudo mount /dev/md127
+```
+
+## replacing a drive in array
+
+Suppose you have some hints that a drive in the array is bad (or about to become bad). For example, data integrity questions, mechanical failure is about to happen, or something else. You want to take it out of the array, and change it to a new drive. Let's go through the process on the drive `/dev/sdc`.
+
+We will tell `mdadm` to mark the drive as failed, then remove it from the array, and also clear the superblock. The last item will make `mdadm` recreate the data on the drive from other good drives, if you decide to re-add it back.
+
+```shell
+sudo mdadm --manage /dev/md127 --fail /dev/dc1
+sudo mdadm --manage /dev/md127 --remove /dev/dc1
+sudo mdadm --zero-superblock /dev/dc1
+```
+
+**NOTE**: If you get some error that a drive can't be "hot removed", issue the command `sudo echo "frozen" | sudo tee -a /sys/block/md127/md/sync_action` first. Then try again to remove the drive.
+
+After the three above commands above, you should see the message:
+
+```text
+mdadm: set /dev/sdc1 faulty in /dev/md127
+mdadm: hot removed /dev/sdc1 from /dev/md127
+```
+
+Now you can do anything you want with the drive `/dev/sdc`. Once ready to add it back to the array, make sure it's properly formatted (there is a primary partition on it - refer to the beginning of this guide), and run the command:
+
+```shell
+sudo mdadm --manage /dev/md127 --add /dev/dc1
+```
+
+This operation will trigger a `check`, and the new drive will be inserted in the array, and populated with data from the other 3 drives.
 
 ## references
 

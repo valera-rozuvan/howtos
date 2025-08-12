@@ -212,3 +212,19 @@ While doing this research, the following resources have been of most help:
 4. [Check RAID software: my status](https://serverfault.com/questions/721364/check-raid-software-my-status)
 5. [mdadm RAID implementation with GPT partitioning](https://unix.stackexchange.com/questions/318098/mdadm-raid-implementation-with-gpt-partitioning/320330#320330)
 6. [HTGWA: Create a RAID array in Linux with mdadm](https://www.jeffgeerling.com/blog/2021/htgwa-create-raid-array-linux-mdadm)
+7. [Arch Linux wiki: RAID](https://wiki.archlinux.org/title/RAID)
+8. [mdadm.conf(5) — Linux manual page](https://man7.org/linux/man-pages/man5/mdadm.conf.5.html) and [mdadm(8) — Linux manual page](https://man7.org/linux/man-pages/man8/mdadm.8.html)
+
+Resources specifically on rescue/corruption/repair/rebuild of `mdadm` Raid arrays:
+
+1. [Rebuilding Raid array](https://serverfault.com/questions/927759/rebuilding-raid-array)
+2. [Data integrity check question](https://www.reddit.com/r/linuxadmin/comments/18vty5b/data_integrity_check_question/)
+3. [Battle testing ZFS, Btrfs and mdadm+dm-integrity](https://unixdigest.com/articles/battle-testing-zfs-btrfs-and-mdadm-dm.html)
+4. [MDADM fails to hot remove disk](https://www.linuxquestions.org/questions/linux-newbie-8/mdadm-fails-to-hot-remove-disk-657518/)
+5. [How to check mdadm RAID5 integrity after power failure/random reboot](https://unix.stackexchange.com/questions/531229/how-to-check-mdadm-raid5-integrity-after-power-failure-random-reboot)
+6. [mdadm repair single chunk / sector](https://superuser.com/questions/1346523/mdadm-repair-single-chunk-sector)
+7. [MDADM RAID5 Recovery and corruption detection suggestions](https://forums.gentoo.org/viewtopic-p-7482410.html)
+8. [File system corrupt after re-adding software RAID 1 member after test. Why?](https://superuser.com/questions/1402239/file-system-corrupt-after-re-adding-software-raid-1-member-after-test-why)
+9. [How to properly wipe data from a replaced raid drive and solve couldnt open /dev/sdX for write - not zeroing](https://www.claudiokuenzler.com/blog/1217/wipe-erase-data-replaced-raid-drive-couldnt-open-for-write-not-zeroing)
+10. [Finding files on a RAID5 ext4 filesystem associated to bad blocks on one HDD](https://superuser.com/questions/1747207/finding-files-on-a-raid5-ext4-filesystem-associated-to-bad-blocks-on-one-hdd)
+11. [The Butter goes on top (Safe BTRFS raid5/6)](https://forum.rockstor.com/t/the-butter-goes-on-top-safe-btrfs-raid5-6/2089)

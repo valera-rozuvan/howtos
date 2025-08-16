@@ -107,9 +107,9 @@ EOF
 
 
 
-chmod a+x /home/gitreps/git-shell-commands/no-interactive-login
-chmod a+x /home/gitreps/git-shell-commands/help
-chmod a+x /home/gitreps/git-shell-commands/list
+sudo chmod a+x /home/gitreps/git-shell-commands/no-interactive-login
+sudo chmod a+x /home/gitreps/git-shell-commands/help
+sudo chmod a+x /home/gitreps/git-shell-commands/list
 ```
 
 Now the setup of the home directory is done!

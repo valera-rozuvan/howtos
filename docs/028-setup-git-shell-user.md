@@ -7,8 +7,10 @@ We want to create a Linux user with git repositories in his home directories. Ex
 First, create a new user `vrs`, specify a home directory, and set the default shell to `git-shell`:
 
 ```shell
-sudo useradd --create-home --base-dir /home/gitreps --shell /usr/bin/git-shell vrs
+sudo useradd --create-home --home-dir /home/gitreps --shell /usr/bin/git-shell vrs
 ```
+
+**NOTE**: to delete the new user, use `sudo deluser --remove-home --remove-all-files vrs`.
 
 You can see the list of available shells with the command:
 

@@ -10,7 +10,7 @@ First, create a new user `vrs`, specify a home directory, and set the default sh
 sudo useradd --create-home --home-dir /home/gitreps --shell /usr/bin/git-shell vrs
 ```
 
-**NOTE**: to delete the new user, use `sudo deluser --remove-home --remove-all-files vrs`.
+**NOTE**: to delete the new user, use `sudo deluser --remove-home --remove-all-files vrs && sudo delgroup vrs`.
 
 You can see the list of available shells with the command:
 
@@ -44,16 +44,21 @@ Let's add our main user to the new user's group `vrs`:
 sudo usermod --append --groups vrs valera
 ```
 
+To make this change take effect right away (without logging out and back in), run the command `sudo su - $USER`.
+
 ## setup new user's home directory
 
 We will clean up the `vrs` home directory, and set proper permissions:
 
 ```shell
-sudo rm -rf /home/gitreps/.[!.] /home/gitreps/.??*
 sudo chmod 0775 /home/gitreps
+sudo rm -rf /home/gitreps/.[!.]* /home/gitreps/.??*
+ls -ahl /home/gitreps
 ```
 
-NOTE: permission `0775` translates to `rwxrwxr-x`.
+NOTE 1: you should see an empty directory `/home/gitreps` at this point.
+
+NOTE 2: permission `0775` translates to `rwxrwxr-x`.
 
 From this point on, our regular user can create directories, and write files to the home directory of `vrs`.
 
@@ -62,7 +67,7 @@ Let's setup the special directory `git-shell-commands`, and copy some boilerplat
 ```shell
 mkdir /home/gitreps/git-shell-commands
 
-cat > /home/gitreps/git-shell-commands/no-interactive-login <<\EOF
+cat > /home/gitreps/git-shell-commands/no-interactive-login << \EOF
 #!/bin/sh
 printf '%s\n' "Hi $USER! You've successfully authenticated, but I do not"
 printf '%s\n' "provide interactive shell access."
@@ -71,7 +76,7 @@ EOF
 
 
 
-cat > /home/gitreps/git-shell-commands/help <<\EOF
+cat > /home/gitreps/git-shell-commands/help << \EOF
 #!/bin/sh
 
 if tty -s
@@ -94,7 +99,7 @@ EOF
 
 
 
-cat > /home/gitreps/git-shell-commands/list <<\EOF
+cat > /home/gitreps/git-shell-commands/list << \EOF
 #!/bin/sh
 
 print_if_bare_repo='
@@ -109,9 +114,14 @@ EOF
 
 
 
-sudo chmod a+x /home/gitreps/git-shell-commands/no-interactive-login
-sudo chmod a+x /home/gitreps/git-shell-commands/help
-sudo chmod a+x /home/gitreps/git-shell-commands/list
+chmod u+x,g+x /home/gitreps/git-shell-commands/no-interactive-login
+chmod u+x,g+x /home/gitreps/git-shell-commands/help
+chmod u+x,g+x /home/gitreps/git-shell-commands/list
+
+
+
+sudo chown --recursive vrs:vrs /home/gitreps/
+sudo chgrp --recursive vrs /home/gitreps/
 ```
 
 Now the setup of the home directory is done!
@@ -127,13 +137,13 @@ sudo aptitude install -y openssh-server
 Proper configs for SSH server:
 
 ```shell
-rm -rf /etc/ssh_banner
-rm -rf /etc/ssh/sshd_config
-rm -rf /etc/ssh/ssh_config
+sudo rm -rf /etc/ssh_banner
+sudo rm -rf /etc/ssh/sshd_config
+sudo rm -rf /etc/ssh/ssh_config
 
 
 
-cat > /etc/ssh/ssh_config <<\EOF
+sudo tee /etc/ssh/ssh_config << \EOF
 Host *
     SendEnv LANG LC_*
     HashKnownHosts yes
@@ -142,7 +152,7 @@ EOF
 
 
 
-cat > /etc/ssh/sshd_config <<\EOF
+sudo tee /etc/ssh/sshd_config << \EOF
 Port 7001
 PermitRootLogin no
 StrictModes yes
@@ -171,7 +181,7 @@ EOF
 
 
 
-cat > /etc/ssh/sshd_config <<\EOF
+sudo tee /etc/ssh_banner << \EOF
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █░░╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗░░█
 █░░║║║╠─║─║─║║║║║╠─░░█
@@ -193,7 +203,15 @@ sudo systemctl daemon-reload
 sudo systemctl restart ssh.socket
 ```
 
-See discussion at [SSHd now uses socket-based activation (Ubuntu 22.10 and later)](https://discourse.ubuntu.com/t/sshd-now-uses-socket-based-activation-ubuntu-22-10-and-later/30189).
+or, a combination of both variants. It depends on subtle implementation differences in various distros. See discussion at [SSHd now uses socket-based activation (Ubuntu 22.10 and later)](https://discourse.ubuntu.com/t/sshd-now-uses-socket-based-activation-ubuntu-22-10-and-later/30189).
+
+Make sure that there is no error from the ssh service:
+
+```shell
+sudo service ssh status
+```
+
+You should see that the ssh service is in `active (running)` state.
 
 ## adding git repositories
 
@@ -204,6 +222,7 @@ git init --bare /home/gitreps/new-git-repo.git
 sudo chown --recursive vrs:vrs /home/gitreps/
 sudo chgrp --recursive vrs /home/gitreps/
 ```
+**NOTE**: The git command is being run with our standard system user. We are issuing the commands `chown` and `chgrp` for the new git repository to be fully owned by the user `vrs`. Going forward, we will be accessing it using SSH with user `vrs`.
 
 ## working with git repos over SSH
 
@@ -250,7 +269,7 @@ Connection to localhost closed.
 You can however run the defined commands `help`, and `list`:
 
 ```text
- ssh -p 7001 vrs@localhost help
+$ ssh -p 7001 vrs@localhost help
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █░░╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗░░█
 █░░║║║╠─║─║─║║║║║╠─░░█
@@ -307,8 +326,8 @@ Some technical info on git-shell:
 
 My SSH setup docs:
 
-- https://github.com/valera-rozuvan/bash-scripts/blob/main/linux-setup/07-setup-ssh-server.sh
-- https://github.com/valera-rozuvan/dotfiles/tree/main/openssh-server
+- [linux-setup/07-setup-ssh-server.sh](https://github.com/valera-rozuvan/bash-scripts/blob/main/linux-setup/07-setup-ssh-server.sh)
+- [dotfiles :: openssh-server](https://github.com/valera-rozuvan/dotfiles/tree/main/openssh-server)
 
 Debian SSH docs:
 

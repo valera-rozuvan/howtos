@@ -32,6 +32,7 @@ a collection of HOWTO documents - mostly linux related
 26. [Recursive sha256 workflow](./docs/026-recursive-sha256-workflow.md)
 27. [mdadm Raid 5 on QEMU](./docs/027-mdadm-raid-5-on-qemu.md)
 28. [Setup git-shell user](./docs/028-setup-git-shell-user.md)
+29. [safe curl options](./docs/029-safe-curl-options.md)
 
 ## other cool things
 

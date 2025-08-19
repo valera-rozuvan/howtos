@@ -49,4 +49,18 @@ If all is OK, we will see the following output:
 /home/valera/your-directory/file1.txt: OK
 ```
 
+## comparing two sha256sum.txt files
+
+Say you have a backup somewhere, with the same contents as the folder `/home/valera/your-directory`. You have two checksum files, each with the `sha256` hashes of all the files. Each `sha256sum.txt` can contain a different order of files, but the hashes themselves should match for each file. Now, how do we compare, and be certain that the files contain the same hashes for matching files?
+
+One quick approach is to get just the hashes from the checksum file, sort them alphabetically, and compute a hash of the results. Do this for both `sha256sum.txt` files, and compare the resulting hashes.
+
+```shell
+$ awk '{print $1}' "/mnt/backup/place/your-directory.sha256sum.txt" | sort | sha256sum
+ebf4be0467b616ad13cd1707566eb4bc08fec12fc3517fafdff30d98a068a16f  -
+
+$ awk '{print $1}' "/home/valera/your-directory.sha256sum.txt" | sort | sha256sum
+ebf4be0467b616ad13cd1707566eb4bc08fec12fc3517fafdff30d98a068a16f  -
+```
+
 Remember to backup your data regularly. Enjoy ;)

@@ -2,7 +2,7 @@
 
 First run `gcloud init` and add all of your clusters. Then you can use the following Bash script to change between your clusters:
 
-```
+```shell
 #!/bin/bash
 
 kubectl config unset current-context
@@ -22,7 +22,7 @@ exit 0
 
 Some useful commands which can show you necessary data for above script:
 
-```
+```shell
 gcloud auth list
 gcloud projects list
 gcloud config list
@@ -34,7 +34,7 @@ kubectl config rename-context old-ctx-name new-ctx-name
 
 Initial config create, for working with a k8s cluster:
 
-```
+```shell
 gcloud config configurations create NEW_CONFIG_NAME
 gcloud auth login
 gcloud config set core/project PROJECT_NAME && \
@@ -44,3 +44,9 @@ gcloud config set core/project PROJECT_NAME && \
   kubectl config rename-context OLD_CTX_NAME NEW_CTX_NAME && \
   kubectl config get-contexts
 ```
+
+## about these howtos
+
+This howto is part of a larger collection of [howtos](https://howtos.rozuvan.net/) maintained by the author (mostly for his own reference). The source code for the current howto in plain Markdown is [available on GitHub](https://github.com/valera-rozuvan/howtos/blob/main/docs/009-gcloud-setup.md). If you have a GitHub account, you can jump straight in, and suggest edits or improvements via the link at the bottom of the page (**Improve this page**).
+
+made with ❤ by [Valera Rozuvan](https://valera.rozuvan.net/)

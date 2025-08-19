@@ -2,7 +2,7 @@
 
 To create a random file (random name, random data) that is 1GB in size, you can use:
 
-```
+```shell
 dd \
   if=/dev/urandom \
   of=/some_folder/`tr -dc A-Za-z0-9 </dev/urandom | head -c 26` \
@@ -19,7 +19,7 @@ The sub command `tr -dc A-Za-z0-9 </dev/urandom | head -c 26` simply generates a
 
 If you want to loop the command, and create `N` random files, you can use the following:
 
-```
+```shell
 for i in {1..N}; do COMMAND; done
 ```
 
@@ -29,7 +29,7 @@ Where `COMMAND` should be replaced with the command to create 1 random file.
 
 Here is a Bash script that will create 869 random files, each being 1GB in size. Make sure to properly set `FOLDER_TO_FILL`.
 
-```
+```shell
 #!/bin/bash
 
 FOLDER_TO_FILL=/some/system/path
@@ -67,7 +67,13 @@ sudo dcfldd \
   statusinterval=10 \
   status=progress \
   bs=10M \
-  conv=notrunc 
+  conv=notrunc
 ```
 
 After the device is completely wiped, use `gparted` to format it with a new file system.
+
+## about these howtos
+
+This howto is part of a larger collection of [howtos](https://howtos.rozuvan.net/) maintained by the author (mostly for his own reference). The source code for the current howto in plain Markdown is [available on GitHub](https://github.com/valera-rozuvan/howtos/blob/main/docs/017-random-1-gb-file.md). If you have a GitHub account, you can jump straight in, and suggest edits or improvements via the link at the bottom of the page (**Improve this page**).
+
+made with ❤ by [Valera Rozuvan](https://valera.rozuvan.net/)

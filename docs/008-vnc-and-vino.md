@@ -3,14 +3,14 @@
 On the client:
 
 1. Install the client: `sudo aptitude install xtightvncviewer`.
-1. Setup SSH port forwarding: `ssh -L 12345:localhost:5900 user_name@123.123.123.123 -p 7001`. Edit username and IP.
-1. In a separate terminal, start the client: `vncviewer localhost:12345 > /var/log/vnc-client.log 2>&1 &`.
+2. Setup SSH port forwarding: `ssh -L 12345:localhost:5900 user_name@123.123.123.123 -p 7001`. Edit username and IP.
+3. In a separate terminal, start the client: `vncviewer localhost:12345 > /var/log/vnc-client.log 2>&1 &`.
 
 On the server:
 
 1. Install the server: `sudo aptitude install vino`.
-1. Make sure SSH port is open. In our example it's 7001. Also, make sure client can connect via SSH (authorized key).
-1. Start the server:
+2. Make sure SSH port is open. In our example it's 7001. Also, make sure client can connect via SSH (authorized key).
+3. Start the server:
 
 ```shell
 #!/bin/bash

@@ -8,21 +8,21 @@ We assume that we want to setup Flutter on a modern Debian based Linux distro. L
 sudo apt install -y virt-manager virt-viewer qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 ```
 
-1. You need the Flutter SDK. Go follow the [official Flutter installation](https://flutter.dev/docs/get-started/install/linux) instructions. When you get to the step of running `flutter doctor`, stop, and do all the remaining steps in this HOWTO.
+2. You need the Flutter SDK. Go follow the [official Flutter installation](https://flutter.dev/docs/get-started/install/linux) instructions. When you get to the step of running `flutter doctor`, stop, and do all the remaining steps in this HOWTO.
 
-1. Install Android Studio from [official Android Studio](https://developer.android.com/studio) site.
+3. Install Android Studio from [official Android Studio](https://developer.android.com/studio) site.
 
-1. When you can run Android Studio, go to `Configure -> Plugins`, and install the `Dart` and `Flutter` plugins.
+4. When you can run Android Studio, go to `Configure -> Plugins`, and install the `Dart` and `Flutter` plugins.
 
-1. Restart Android Studio, create a new Flutter based project, and try to run it in the Android simulator. You should be able to.
+5. Restart Android Studio, create a new Flutter based project, and try to run it in the Android simulator. You should be able to.
 
-1. Install and configure JAVA version 8. This is required for the current Flutter version. You can do:
+6. Install and configure JAVA version 8. This is required for the current Flutter version. You can do:
 
 ```shell
 sudo apt install openjdk-8-jdk openjdk-8-jre
 ```
 
-1. Add necessary paths and variables to your environment. Place the following in your `~/.bashrc` file:
+7. Add necessary paths and variables to your environment. Place the following in your `~/.bashrc` file:
 
 ```text
 export PATH="$PATH:/home/valera/bin/flutter/bin"
@@ -31,14 +31,14 @@ export ANDROID_SDK="/home/valera/Android/Sdk"
 export PATH="$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH"
 ```
 
-1. Finally, open a new terminal (for the Bash settings to come into effect), and run:
+8. Finally, open a new terminal (for the Bash settings to come into effect), and run:
 
 ```shell
 flutter doctor --android-licenses
 flutter doctor
 ```
 
-1. Additionally, you can launch an Android emulator from the CLI by running:
+9. Additionally, you can launch an Android emulator from the CLI by running:
 
 ```shell
 emulator -noaudio -avd Pixel_3a_API_30_x86

@@ -9,15 +9,15 @@ sudo tar -C /usr/local -xzf go1.10.linux-amd64.tar.gz
 rm -rf go1.10.linux-amd64.tar.gz
 ```
 
-1. Add `go` binary to `PATH`. To update `~/.bashrc` file, run:
+2. Add `go` binary to `PATH`. To update `~/.bashrc` file, run:
 
 ```shell
 echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
 ```
 
-1. Login and logout (or run `source ~/.bashrc`) so that changes propagate to `PATH`.
+3. Login and logout (or run `source ~/.bashrc`) so that changes propagate to `PATH`.
 
-1. Clone and build [go-ethereum](https://github.com/ethereum/go-ethereum) latest version:
+4. Clone and build [go-ethereum](https://github.com/ethereum/go-ethereum) latest version:
 
 ```shell
 cd ~
@@ -29,7 +29,7 @@ git checkout v1.8.2
 make -j 2 geth
 ```
 
-1. Make a symbolic link to `geth` so that you can run it from anywhere (**adjust the source path as necessary!**):
+5. Make a symbolic link to `geth` so that you can run it from anywhere (**adjust the source path as necessary!**):
 
 ```shell
 sudo ln -s /home/ubuntu/dev/go-ethereum/build/bin/geth /usr/bin/geth

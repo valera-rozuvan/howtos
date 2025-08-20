@@ -6,7 +6,7 @@
 find DIR_1 -type f | wc -l
 ```
 
-1. Then do the comparison, using `pv` to see progress:
+2. Then do the comparison, using `pv` to see progress:
 
 ```shell
 diff -rqs DIR_1 DIR_2 | pv -l -s NUM_FILES > /tmp/logfile
@@ -14,7 +14,7 @@ diff -rqs DIR_1 DIR_2 | pv -l -s NUM_FILES > /tmp/logfile
 
 Where `NUM_FILES` should be replaced with the number you got from the 1st command.
 
-1. When `diff` finishes, you can run the following command to see if different files were found:
+3. When `diff` finishes, you can run the following command to see if different files were found:
 
 ```shell
 cat /tmp/logfile | grep -iv "identical"

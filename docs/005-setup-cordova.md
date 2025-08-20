@@ -12,20 +12,20 @@ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.9/install.sh | 
 nvm install 8.11.1
 ```
 
-1. Check that Node.js and NPM are available:
+2. Check that Node.js and NPM are available:
 
 ```shell
 node --version
 npm --version
 ```
 
-1. Download Java SE Development Kit 8u172:
+3. Download Java SE Development Kit 8u172:
 
 ```text
 http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 ```
 
-1. Create installer, install Java:
+4. Create installer, install Java:
 
 ```shell
 sudo aptitude install -y java-package
@@ -34,7 +34,7 @@ sudo dpkg -i oracle-java8-jdk_8u172_amd64.deb
 javac -version
 ```
 
-1. Add `JAVA_HOME` environment variable. Check what the path to JAVA home is:
+5. Add `JAVA_HOME` environment variable. Check what the path to JAVA home is:
 
 ```shell
 sudo update-alternatives --config java
@@ -46,7 +46,7 @@ Add `JAVA_HOME` variable to `.bashrc` file:
 export JAVA_HOME="/usr/lib/jvm/oracle-java8-jdk-amd64"
 ```
 
-1. Install Gradle:
+6. Install Gradle:
 
 ```shell
 wget https://downloads.gradle.org/distributions/gradle-4.6-bin.zip
@@ -60,13 +60,13 @@ And add Gradle to `PATH`. Add to `.bashrc` file:
 export PATH=$PATH:/opt/gradle/gradle-4.6/bin
 ```
 
-1. Check that Gradle is available:
+7. Check that Gradle is available:
 
 ```shell
 gradle --version
 ```
 
-1. Download, extract, and install Android SDK:
+8. Download, extract, and install Android SDK:
 
 ```shell
 wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
@@ -77,7 +77,7 @@ cd ~/android_sdk/
 tools/bin/sdkmanager --update
 ```
 
-1. Add Android SDK to path. Append the following lines to your `.bashrc` file:
+9. Add Android SDK to path. Append the following lines to your `.bashrc` file:
 
 ```text
 export ANDROID_HOME=$HOME/android_sdk
@@ -85,13 +85,13 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 ```
 
-1. Check that Android tools are available:
+10. Check that Android tools are available:
 
 ```shell
 adb --version
 ```
 
-1. Install necessary Android SDK packages:
+11. Install necessary Android SDK packages:
 
 ```shell
 tools/bin/sdkmanager \
@@ -102,19 +102,19 @@ tools/bin/sdkmanager \
   "platforms;android-27"
 ```
 
-1. Install Cordova:
+12. Install Cordova:
 
 ```shell
 npm install cordova -g
 ```
 
-1. Check that Cordova is working:
+13. Check that Cordova is working:
 
 ```shell
 cordova -v
 ```
 
-1. Create and build a simple `Hello, world!` project:
+14. Create and build a simple `Hello, world!` project:
 
 ```shell
 mkdir dev
@@ -127,7 +127,7 @@ cordova requirements
 cordova build android
 ```
 
-1. Install generated APK to device via USB:
+15. Install generated APK to device via USB:
 
 ```shell
 cordova run android

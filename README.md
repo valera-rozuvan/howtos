@@ -33,6 +33,7 @@ a collection of HOWTO documents - mostly linux related
 1. [mdadm Raid 5 on QEMU](./docs/027-mdadm-raid-5-on-qemu.md)
 1. [Setup git-shell user](./docs/028-setup-git-shell-user.md)
 1. [safe curl options](./docs/029-safe-curl-options.md)
+1. [lint Markdown files](./docs/030-lint-markdown-files.md)
 
 ## other cool things
 

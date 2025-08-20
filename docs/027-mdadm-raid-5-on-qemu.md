@@ -79,7 +79,7 @@ $ sudo parted -a optimal /dev/sdb
 
 Now you have four partitions ready for `mdadm` to consume. Let's move on to the next step!
 
-# setting up mdadm on the guest
+## setting up mdadm on the guest
 
 It's time to install the `mdadm` util:
 
@@ -264,24 +264,30 @@ This operation will trigger a `check`, and the new drive will be inserted in the
 While doing this research, the following resources have been of most help:
 
 1. [Setting up a Linux mdadm raid array with 4k sector disks and LVM.](https://dennisfleurbaaij.blogspot.com/2013/01/setting-up-linux-mdadm-raid-array-with.html)
-2. [How To Create RAID Arrays with mdadm on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-create-raid-arrays-with-mdadm-on-ubuntu)
-3. [RAID (mdadm) - Flags necessary?](https://askubuntu.com/questions/250288/raid-mdadm-flags-necessary)
-4. [Check RAID software: my status](https://serverfault.com/questions/721364/check-raid-software-my-status)
-5. [mdadm RAID implementation with GPT partitioning](https://unix.stackexchange.com/questions/318098/mdadm-raid-implementation-with-gpt-partitioning/320330#320330)
-6. [HTGWA: Create a RAID array in Linux with mdadm](https://www.jeffgeerling.com/blog/2021/htgwa-create-raid-array-linux-mdadm)
-7. [Arch Linux wiki: RAID](https://wiki.archlinux.org/title/RAID)
-8. [mdadm.conf(5) — Linux manual page](https://man7.org/linux/man-pages/man5/mdadm.conf.5.html) and [mdadm(8) — Linux manual page](https://man7.org/linux/man-pages/man8/mdadm.8.html)
+1. [How To Create RAID Arrays with mdadm on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-create-raid-arrays-with-mdadm-on-ubuntu)
+1. [RAID (mdadm) - Flags necessary?](https://askubuntu.com/questions/250288/raid-mdadm-flags-necessary)
+1. [Check RAID software: my status](https://serverfault.com/questions/721364/check-raid-software-my-status)
+1. [mdadm RAID implementation with GPT partitioning](https://unix.stackexchange.com/questions/318098/mdadm-raid-implementation-with-gpt-partitioning/320330#320330)
+1. [HTGWA: Create a RAID array in Linux with mdadm](https://www.jeffgeerling.com/blog/2021/htgwa-create-raid-array-linux-mdadm)
+1. [Arch Linux wiki: RAID](https://wiki.archlinux.org/title/RAID)
+1. [mdadm.conf(5) — Linux manual page](https://man7.org/linux/man-pages/man5/mdadm.conf.5.html) and [mdadm(8) — Linux manual page](https://man7.org/linux/man-pages/man8/mdadm.8.html)
 
 Resources specifically on rescue/corruption/repair/rebuild of `mdadm` Raid arrays:
 
 1. [Rebuilding Raid array](https://serverfault.com/questions/927759/rebuilding-raid-array)
-2. [Data integrity check question](https://www.reddit.com/r/linuxadmin/comments/18vty5b/data_integrity_check_question/)
-3. [Battle testing ZFS, Btrfs and mdadm+dm-integrity](https://unixdigest.com/articles/battle-testing-zfs-btrfs-and-mdadm-dm.html)
-4. [MDADM fails to hot remove disk](https://www.linuxquestions.org/questions/linux-newbie-8/mdadm-fails-to-hot-remove-disk-657518/)
-5. [How to check mdadm RAID5 integrity after power failure/random reboot](https://unix.stackexchange.com/questions/531229/how-to-check-mdadm-raid5-integrity-after-power-failure-random-reboot)
-6. [mdadm repair single chunk / sector](https://superuser.com/questions/1346523/mdadm-repair-single-chunk-sector)
-7. [MDADM RAID5 Recovery and corruption detection suggestions](https://forums.gentoo.org/viewtopic-p-7482410.html)
-8. [File system corrupt after re-adding software RAID 1 member after test. Why?](https://superuser.com/questions/1402239/file-system-corrupt-after-re-adding-software-raid-1-member-after-test-why)
-9. [How to properly wipe data from a replaced raid drive and solve couldnt open /dev/sdX for write - not zeroing](https://www.claudiokuenzler.com/blog/1217/wipe-erase-data-replaced-raid-drive-couldnt-open-for-write-not-zeroing)
-10. [Finding files on a RAID5 ext4 filesystem associated to bad blocks on one HDD](https://superuser.com/questions/1747207/finding-files-on-a-raid5-ext4-filesystem-associated-to-bad-blocks-on-one-hdd)
-11. [The Butter goes on top (Safe BTRFS raid5/6)](https://forum.rockstor.com/t/the-butter-goes-on-top-safe-btrfs-raid5-6/2089)
+1. [Data integrity check question](https://www.reddit.com/r/linuxadmin/comments/18vty5b/data_integrity_check_question/)
+1. [Battle testing ZFS, Btrfs and mdadm+dm-integrity](https://unixdigest.com/articles/battle-testing-zfs-btrfs-and-mdadm-dm.html)
+1. [MDADM fails to hot remove disk](https://www.linuxquestions.org/questions/linux-newbie-8/mdadm-fails-to-hot-remove-disk-657518/)
+1. [How to check mdadm RAID5 integrity after power failure/random reboot](https://unix.stackexchange.com/questions/531229/how-to-check-mdadm-raid5-integrity-after-power-failure-random-reboot)
+1. [mdadm repair single chunk / sector](https://superuser.com/questions/1346523/mdadm-repair-single-chunk-sector)
+1. [MDADM RAID5 Recovery and corruption detection suggestions](https://forums.gentoo.org/viewtopic-p-7482410.html)
+1. [File system corrupt after re-adding software RAID 1 member after test. Why?](https://superuser.com/questions/1402239/file-system-corrupt-after-re-adding-software-raid-1-member-after-test-why)
+1. [How to properly wipe data from a replaced raid drive and solve couldnt open /dev/sdX for write - not zeroing](https://www.claudiokuenzler.com/blog/1217/wipe-erase-data-replaced-raid-drive-couldnt-open-for-write-not-zeroing)
+1. [Finding files on a RAID5 ext4 filesystem associated to bad blocks on one HDD](https://superuser.com/questions/1747207/finding-files-on-a-raid5-ext4-filesystem-associated-to-bad-blocks-on-one-hdd)
+1. [The Butter goes on top (Safe BTRFS raid5/6)](https://forum.rockstor.com/t/the-butter-goes-on-top-safe-btrfs-raid5-6/2089)
+
+## about these howtos
+
+This howto is part of a larger collection of [howtos](https://howtos.rozuvan.net/) maintained by the author (mostly for his own reference). The source code for the current howto in plain Markdown is [available on GitHub](https://github.com/valera-rozuvan/howtos/blob/main/docs/027-mdadm-raid-5-on-qemu.md). If you have a GitHub account, you can jump straight in, and suggest edits or improvements via the link at the bottom of the page (**Improve this page**).
+
+made with ❤ by [Valera Rozuvan](https://valera.rozuvan.net/)

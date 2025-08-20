@@ -81,19 +81,19 @@ cat > /home/gitreps/git-shell-commands/help << \EOF
 
 if tty -s
 then
-	echo "Run 'help' for help, or 'exit' to leave.  Available commands:"
+    echo "Run 'help' for help, or 'exit' to leave.  Available commands:"
 else
-	echo "Run 'help' for help.  Available commands:"
+    echo "Run 'help' for help.  Available commands:"
 fi
 
 cd "$(dirname "$0")"
 
 for cmd in *
 do
-	case "$cmd" in
-	help) ;;
-	*) [ -f "$cmd" ] && [ -x "$cmd" ] && echo "$cmd" ;;
-	esac
+    case "$cmd" in
+    help) ;;
+    *) [ -f "$cmd" ] && [ -x "$cmd" ] && echo "$cmd" ;;
+    esac
 done
 EOF
 
@@ -103,10 +103,10 @@ cat > /home/gitreps/git-shell-commands/list << \EOF
 #!/bin/sh
 
 print_if_bare_repo='
-	if "$(git --git-dir="$1" rev-parse --is-bare-repository)" = true
-	then
-		printf "%s\n" "${1#./}"
-	fi
+    if "$(git --git-dir="$1" rev-parse --is-bare-repository)" = true
+    then
+        printf "%s\n" "${1#./}"
+    fi
 '
 
 find -type d -name "*.git" -exec sh -c "$print_if_bare_repo" -- \{} \; -prune 2>/dev/null
@@ -222,6 +222,7 @@ git init --bare /home/gitreps/new-git-repo.git
 sudo chown --recursive vrs:vrs /home/gitreps/
 sudo chgrp --recursive vrs /home/gitreps/
 ```
+
 **NOTE**: The git command is being run with our standard system user. We are issuing the commands `chown` and `chgrp` for the new git repository to be fully owned by the user `vrs`. Going forward, we will be accessing it using SSH with user `vrs`.
 
 ## working with git repos over SSH
@@ -321,8 +322,8 @@ Some technical info on git-shell:
 
 - [git-shell](https://git-scm.com/docs/git-shell)
 - [Sample programs callable through git-shell](https://github.com/git/git/blob/master/contrib/git-shell-commands/README)
-  - [help](https://github.com/git/git/blob/master/contrib/git-shell-commands/help)
-  - [list](https://github.com/git/git/blob/master/contrib/git-shell-commands/list)
+   - [help](https://github.com/git/git/blob/master/contrib/git-shell-commands/help)
+   - [list](https://github.com/git/git/blob/master/contrib/git-shell-commands/list)
 
 My SSH setup docs:
 
@@ -349,3 +350,9 @@ Git `safe.directory` warnings:
 - ["git submodule update" failed with 'fatal: detected dubious ownership in repository at...'](https://stackoverflow.com/questions/72978485/git-submodule-update-failed-with-fatal-detected-dubious-ownership-in-reposit)
 - [CVE-2022-24765](https://nvd.nist.gov/vuln/detail/cve-2022-24765)
 - [https://github.com/git/git/commit/8959555cee7ec045958f9b6dd62e541affb7e7d9](https://github.com/git/git/commit/8959555cee7ec045958f9b6dd62e541affb7e7d9)
+
+## about these howtos
+
+This howto is part of a larger collection of [howtos](https://howtos.rozuvan.net/) maintained by the author (mostly for his own reference). The source code for the current howto in plain Markdown is [available on GitHub](https://github.com/valera-rozuvan/howtos/blob/main/docs/028-setup-git-shell-user.md). If you have a GitHub account, you can jump straight in, and suggest edits or improvements via the link at the bottom of the page (**Improve this page**).
+
+made with ❤ by [Valera Rozuvan](https://valera.rozuvan.net/)

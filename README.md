@@ -35,11 +35,6 @@ a collection of HOWTO documents - mostly linux related
 29. [safe curl options](./docs/029-safe-curl-options.md)
 30. [lint Markdown files](./docs/030-lint-markdown-files.md)
 
-## other cool things
-
-- [automated running of tests on AWS](./aws-test-runner)
-- [fetch all GitHub repos from an org or user](./fetch-all-github-repos)
-
 ## about these howtos
 
 This howto collection is maintained by the author (mostly for his own reference). The source code in plain Markdown is [available on GitHub](https://github.com/valera-rozuvan/howtos). If you have a GitHub account, you can jump straight in, and suggest edits or improvements via the link at the bottom of the page (**Improve this page**).

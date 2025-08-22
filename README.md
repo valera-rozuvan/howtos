@@ -34,6 +34,7 @@ a collection of HOWTO documents - mostly linux related
 28. [Setup git-shell user](./docs/028-setup-git-shell-user.md)
 29. [safe curl options](./docs/029-safe-curl-options.md)
 30. [lint Markdown files](./docs/030-lint-markdown-files.md)
+31. [creating a new QEMU VM](./docs/031-creating-a-new-qemu-vm.md)
 
 ## about these howtos
 

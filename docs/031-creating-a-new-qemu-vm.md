@@ -170,7 +170,7 @@ Refer to more networking options in [Documentation/Networking](https://wiki.qemu
 
 There is an awesome project [libvirt](https://libvirt.org/) which enables to share the filesystem between the host and the guest. QEMU supports this using the [virtiofsd](https://qemu-stsquad.readthedocs.io/en/doc-updates/tools/virtiofsd.html). Also see [this](https://www.qemu.org/docs/master/system/devices/vhost-user.html) and [this](https://github.com/Xilinx/qemu/blob/master/hw/virtio/vhost-user-fs-pci.c).
 
-There are some guides out there, such as the [gentoo Virtiofs]() guide and the [Standalone virtiofs usage]() guide.
+There are some guides out there, such as the [gentoo Virtiofs](https://wiki.gentoo.org/wiki/Virtiofs) guide and the [Standalone virtiofs usage](https://virtio-fs.gitlab.io/howto-qemu.html) guide.
 
 I will describe the approach that is working for me.
 

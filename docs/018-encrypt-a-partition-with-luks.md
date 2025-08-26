@@ -1,14 +1,12 @@
 # Encrypt a partition with LUKS
 
-1. Extract all USB storage devices.
+We want to format a USB drive, setup [LUKS](https://gitlab.com/cryptsetup/cryptsetup/-/tree/master) encryption, setup [ext4](https://docs.kernel.org/filesystems/ext4/) FS, and test that everything went OK.
 
-This is a safety precaution, so that you don't accidentally wipe the wrong device.
+## pre-requisites
 
-2. Connect the storage device to encrypt.
+Before we begin, it's highly recommended to extract all USB storage devices. This is a safety precaution, so that you don't accidentally wipe the wrong device.
 
-3. Determine which unit was assigned to the device to encrypt.
-
-Use the `dmesg` command to get the name assigned to the recently connected device:
+Connect the storage device to encrypt. Determine which unit was assigned to the device to encrypt. Use the `dmesg` command to get the name assigned to the recently connected device:
 
 ```shell
 dmesg
@@ -25,15 +23,15 @@ You should see something along the lines of:
 [117441.957616] sd 1:0:0:0: [sda] Attached SCSI removable disk
 ```
 
-Thus, in this example, the unit will be the `sda` (`/dev/sda`) and the first and only partition will be the `sda1` (`/dev/sda1`).
-
-4. Unmount the partition.
+Thus, in this example, the unit will be the `sda` (`/dev/sda`) and the first and only partition will be the `sda1` (`/dev/sda1`). Unmount the partition.
 
 ```shell
 umount /dev/sda1
 ```
 
-5. Delete the partition table and create a new one.
+## new partition
+
+Delete the partition table and create a new one.
 
 ```shell
 fdisk /dev/sda
@@ -64,8 +62,6 @@ The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
-
-6. Create a new partition.
 
 Create a new primary partition that will contain the data encrypted with LUKS. For this, use `fdisk` again:
 
@@ -133,7 +129,7 @@ Syncing disks.
 
 The new partition will now be accessible at `/dev/sda1`.
 
-7. Encrypt the new partition.
+## encryption using LUKS
 
 Use the `cryptsetup` command with the `luksFormat` option to encrypt the new LUKS partition:
 
@@ -153,7 +149,7 @@ Enter passphrase for /dev/sda1: some_random_string
 Verify passphrase: some_random_string
 ```
 
-8. Format the new encrypted partition.
+## format the encrypted partition
 
 Use the `cryptsetup` command again but this time with the `luksOpen` option to decrypt the partition. You should also give it a unique name for the mapping, in this example we will use the name `CRYPT_USB`:
 
@@ -196,9 +192,39 @@ Finally, close the partition:
 cryptsetup luksClose CRYPT_USB
 ```
 
-9. Testing
+## disconnecting the physical device
 
-Now disconnect the storage device and reconnect. If all goes well, and depending on your desktop environment and how you have it configured, before you can access the contents of the storage device you must provide the assigned password.
+Safely disconnect the storage device. If your system lacks a friendly way to do this, you can do it via the CLI using [udisksctl](https://wiki.archlinux.org/title/Udisks).
+
+First install the package `udisks2`:
+
+```shell
+sudo aptitude install udisks2
+```
+
+Issue the low level `power-off` command for the device `/dev/sda`:
+
+```shell
+sudo udisksctl power-off --block-device /dev/sda
+```
+
+Among other things, `udisksctl` will instruct the physical device to transfer any remaining data in it's internal cache to it's internal storage. Only now, you can safely remove the physical device from your PC.
+
+## testing
+
+Reconnect the physical device to the PC. If all goes well, and depending on your desktop environment and how you have it configured, before you can access the contents of the storage device you must provide the assigned password. If you have a minimal system installed, you can issue the following commands to test things out:
+
+```shell
+sudo cryptsetup luksOpen /dev/sda1 CRYPT_USB
+sudo mkdir -p /media/valera/data
+sudo mount -t ext4 /dev/mapper/CRYPT_USB /media/valera/data
+sudo touch /media/valera/data/test.txt
+sudo umount /media/valera/data
+sudo cryptsetup luksClose CRYPT_USB
+sudo udisksctl power-off --block-device /dev/sda
+```
+
+Make sure all above commands execute without error.
 
 ## about these howtos
 

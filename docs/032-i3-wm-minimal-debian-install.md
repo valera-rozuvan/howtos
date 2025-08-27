@@ -12,6 +12,12 @@ sudo aptitude install xorg lxterminal i3-wm suckless-tools
 
 ## screen brightness
 
+For managing hardware brightness levels we will be using the tool `brightnessctl`:
+
+```shell
+sudo aptitude install brightnessctl
+```
+
 List devices with ability to change brightness:
 
 ```shell

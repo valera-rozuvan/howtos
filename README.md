@@ -35,6 +35,7 @@ a collection of HOWTO documents - mostly linux related
 29. [safe curl options](./docs/029-safe-curl-options.md)
 30. [lint Markdown files](./docs/030-lint-markdown-files.md)
 31. [creating a new QEMU VM](./docs/031-creating-a-new-qemu-vm.md)
+32. [setup i3-wm with goodies on a minimal Debian install](./docs/032-i3-wm-minimal-debian-install.md)
 
 ## about these howtos
 

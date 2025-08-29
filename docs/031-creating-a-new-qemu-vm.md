@@ -84,7 +84,7 @@ chmod u+x ./install-vm.sh
 
 After the installation, machine will reboot. You can stop the machine booting, and issue a `halt` command.
 
-Now let's create the normal start up script `start.sh`, which will exclude the CDROM mounting our Debian ISO:
+Now let's create the normal start up script `start-vm.sh`, which will exclude the CDROM mounting our Debian ISO:
 
 ```shell
 #!/bin/bash

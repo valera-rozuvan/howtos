@@ -2,7 +2,50 @@
 
 Some notes on installing [i3-wm](https://i3wm.org/) on a minimal [Debian](https://www.debian.org/) system - and making it more user friendly.
 
-## setup i3-wm and helpers
+## initial system setup
+
+By default, the Debian minimal install is ... pretty minimal. There are some things I usually do to make life a bit easier.
+
+First, add some system paths to the default `PATH` system variable for the `root` user:
+
+```shell
+su
+echo "export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" >> ~/.bashrc
+```
+
+This will expose a lot of executables for you to run using just their names. For example `shutdown -h now`.
+
+Second, make sure that you have the latest APT updates. Run the update and upgrade commands:
+
+```shell
+su
+apt-get update
+apt-get upgrade
+```
+
+Third, I like to use `aptitude` for package management, and `sudo` to run privileged commands as a regular user. So install those dependencies:
+
+```shell
+su
+apt-get install aptitude sudo
+```
+
+Lastly, configure our regular user with `sudo` permissions:
+
+```shell
+su
+sudoedit /etc/sudoers
+```
+
+And add the following line at the end of the file:
+
+```text
+valera ALL=(ALL) ALL
+```
+
+**NOTE**: replace the username with the one you are using!
+
+## Setup i3-wm and helpers
 
 Install just the bare minimum - X11, the i3 window manager, a terminal, and the `dmenu` launcher (provided by `suckless-tools`):
 
@@ -242,3 +285,9 @@ If there are some connection issues - try:
 sudo wpa_cli reconnect
 sudo wpa_cli status
 ```
+
+## about these howtos
+
+This howto is part of a larger collection of [howtos](https://howtos.rozuvan.net/) maintained by the author (mostly for his own reference). The source code for the current howto in plain Markdown is [available on GitHub](https://github.com/valera-rozuvan/howtos/blob/main/docs/032-i3-wm-minimal-debian-install.md). If you have a GitHub account, you can jump straight in, and suggest edits or improvements via the link at the bottom of the page (**Improve this page**).
+
+made with ❤ by [Valera Rozuvan](https://valera.rozuvan.net/)

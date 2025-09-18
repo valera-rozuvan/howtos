@@ -56,10 +56,22 @@ Say you have a backup somewhere, with the same contents as the folder `/home/val
 One quick approach is to get just the hashes from the checksum file, sort them alphabetically, and compute a hash of the results. Do this for both `sha256sum.txt` files, and compare the resulting hashes.
 
 ```shell
-$ awk '{print $1}' "/mnt/backup/place/your-directory.sha256sum.txt" | sort | sha256sum
-ebf4be0467b616ad13cd1707566eb4bc08fec12fc3517fafdff30d98a068a16f  -
+awk '{print $1}' "/mnt/backup/place/your-directory.sha256sum.txt" | sort | uniq | sha256sum
+```
 
-$ awk '{print $1}' "/home/valera/your-directory.sha256sum.txt" | sort | sha256sum
+with output:
+
+```text
+ebf4be0467b616ad13cd1707566eb4bc08fec12fc3517fafdff30d98a068a16f  -
+```
+
+```shell
+awk '{print $1}' "/home/valera/your-directory.sha256sum.txt" | sort | uniq | sha256sum
+```
+
+with output:
+
+```text
 ebf4be0467b616ad13cd1707566eb4bc08fec12fc3517fafdff30d98a068a16f  -
 ```
 

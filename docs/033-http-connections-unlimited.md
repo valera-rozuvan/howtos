@@ -1,50 +1,56 @@
 # HTTP connections unlimited
 
-Ever thought about how to craft a HTTP connection? Without tools such as `curl` or `wget`. For the purposes of testing some edge case of the HTTP1.1 protocol. Let's use the tools [netcat](https://en.wikipedia.org/wiki/Netcat) and [openssl](https://en.wikipedia.org/wiki/OpenSSL) for this purpose.
+Ever thought about how to craft a HTTP connection? Without tools such as `curl` or `wget`. For the purposes of testing some edge case of the HTTP1.1 protocol. Let's use the tools [netcat](https://en.wikipedia.org/wiki/Netcat) (`nc`) and [openssl](https://en.wikipedia.org/wiki/OpenSSL) for this purpose.
 
 ## without TLS
 
-Plain HTTP request, POST to `example.com` port `80`:
+Plain HTTP request, POST to `google.com` port `80`, **NOTE** that we target an IP address (the `google.com` bit is specified in the header `Host` in the request body):
 
 ```shell
-connectToHost="example.com 80" ; \
+#!/bin/bash
+
+HostDomain="google.com" ; \
+HostIP="216.58.215.110" ; \
+HostPort="80" ; \
 dataToPost='{ data: "" }' ; \
 dataLen=$(expr length "${dataToPost}" ) ; \
-echo "data: ${dataToPost}" ; \
-echo "data length: ${dataLen}" ; \
-  ( printf "POST /test HTTP/1.1\r\n" ; \
-    printf "Host: %s\r\n" "${connectToHost}" ; \
+  ( printf "POST /api HTTP/1.1\r\n" ; \
+    printf "Host: %s\r\n" "${HostDomain}" ; \
     printf "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0\r\n" ; \
+    printf "Connection: close\r\n" ; \
     printf "Content-Length: %d\r\n" "$((dataLen+1))" ; \
     printf "Content-Type: application/x-www-form-urlencoded\r\n" ; \
     printf "\r\n" ; \
     printf "%s" "${dataToPost}" ; \
-    sleep 1.5 ) | nc ${connectToHost}
+    sleep 1.5 ) | nc ${HostIP} ${HostPort}
 ```
 
 ## with TLS
 
-HTTPs request (using certificates), POST to `example.com` port `443`:
+HTTPs request (using certificates), POST to `google.com` port `443`, **NOTE** that we target an IP address (the `google.com` bit is specified in the header `Host` in the request body):
 
 ```shell
-connectToHost="example.com:443" ; \
+#!/bin/bash
+
+HostDomain="google.com" ; \
+HostIP="216.58.215.110" ; \
+HostPort="443" ; \
 dataToPost='{ data: "" }' ; \
 dataLen=$(expr length "${dataToPost}" ) ; \
-echo "data: ${dataToPost}" ; \
-echo "data length: ${dataLen}" ; \
   ( printf "POST /test HTTP/1.1\r\n" ; \
-    printf "Host: %s\r\n" "${connectToHost}" ; \
+    printf "Host: %s\r\n" "${HostDomain}" ; \
     printf "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0\r\n" ; \
+    printf "Connection: close\r\n" ; \
     printf "Content-Length: %d\r\n" "$((dataLen+1))" ; \
     printf "Content-Type: application/x-www-form-urlencoded\r\n" ; \
     printf "\r\n" ; \
     printf "%s" "${dataToPost}" ; \
-    sleep 1.5 ) | openssl s_client -connect ${connectToHost}
+    sleep 1.5 ) | openssl s_client -connect ${HostIP}:${HostPort}
 ```
 
 ## some notes
 
-In both of the above commands - you can see each line ends with `; \`. This makes it possible to just copy the multi-line Bash snippet, and paste into a terminal. It will run just fine.
+In both of the above commands - you can see each line ends with `; \`. This makes it possible to just copy the multi-line Bash snippet, and paste into a terminal. It will run just fine (as long as your shell is `bash`).
 
 Also, note the explicit new line `printf "\r\n"` being sent to the server. This is part of the HTTP standard, which implies that after a new line, there will be no more headers, and only the request body will follow.
 

@@ -37,6 +37,7 @@ a collection of HOWTO documents - mostly linux related
 31. [creating a new QEMU VM](./docs/031-creating-a-new-qemu-vm.md)
 32. [setup i3-wm with goodies on a minimal Debian install](./docs/032-i3-wm-minimal-debian-install.md)
 33. [HTTP connections unlimited](./docs/033-http-connections-unlimited.md)
+34. [using OpenSSL to encrypt strings and files on Linux](./docs/034-encrypting-files-using-openssl.md)
 
 ## about these howtos
 
